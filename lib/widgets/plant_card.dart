@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plant_watering_reminder/models/plant.dart';
+import 'package:intl/intl.dart'; // Import the intl package
 
 class PlantCard extends StatelessWidget {
   final Plant plant;
@@ -32,7 +33,9 @@ class PlantCard extends StatelessWidget {
             ),
             const SizedBox(height: 8.0),
             Text('Type: ${plant.type}'),
-            Text('Last Watered: ${plant.lastWatered.toLocal().toString().split(' ')[0]}'),
+            Text(
+              'Last Watered: ${DateFormat('dd-MM-yyyy HH:mm').format(plant.lastWatered.toLocal())}',
+            ),
             const SizedBox(height: 16.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
